@@ -1,0 +1,8 @@
+- name: Configure UFW firewall
+  hosts: servers
+  become: yes
+  tasks:
+    - ufw: state=enabled policy=deny
+    - ufw: rule=allow port=ssh proto=tcp
+    - ufw: rule=allow port=80 proto=tcp
+    - ufw: rule=allow port=443 proto=tcp
